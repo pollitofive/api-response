@@ -1,0 +1,59 @@
+{
+    "name": "pollitofive/api-response",
+    "type": "library",
+    "description": "Simple Laravel package to return Json responses.",
+    "keywords": [
+        "api",
+        "response",
+        "laravel",
+        "json",
+        "php",
+        "restful",
+        "RESTful API"
+    ],
+    "homepage": "https://github.com/pollitofive/api-response",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Pollitofive",
+            "email": "obayhamed@gmail.com",
+            "homepage": "http://obay-dev.com",
+            "role": "Creator & Maintainer"
+        }
+    ],
+    "require": {
+        "php" : "^7.3|^8.0",
+        "illuminate/support": "^10.0|^9.0|^8.0|^7.0|^6.0|^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "orchestra/testbench": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pollitofive\\API\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pollitofive\\API\\Tests\\": "tests/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                    "Pollitofive\\API\\ApiResponseServiceProvider"
+            ],
+            "aliases": {
+                "API": "Pollitofive\\API\\Facades\\API"
+            }
+        }
+    }
+}
