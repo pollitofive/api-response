@@ -13,7 +13,7 @@
     ],
     "homepage": "https://github.com/pollitofive/api-response",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Pollitofive",
