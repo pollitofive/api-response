@@ -12,9 +12,9 @@ class OkResponseTest extends TestCase
     {
         $response = API::ok('this is message', [])->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS'  => 200,
-            'DATA'    => [],
+            'message' => 'this is message',
+            'status'  => 200,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -24,9 +24,9 @@ class OkResponseTest extends TestCase
     {
         $response = api()->ok('this is message', [])->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS'  => 200,
-            'DATA'    => [],
+            'message' => 'this is message',
+            'status'  => 200,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -36,9 +36,9 @@ class OkResponseTest extends TestCase
     {
         $response = api()->success('this is message', [])->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS'  => 200,
-            'DATA'    => [],
+            'message' => 'this is message',
+            'status'  => 200,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -48,9 +48,9 @@ class OkResponseTest extends TestCase
     {
         $response = ok('this is message', [])->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS'  => 200,
-            'DATA'    => [],
+            'message' => 'this is message',
+            'status'  => 200,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -60,9 +60,9 @@ class OkResponseTest extends TestCase
     {
         $response = success('this is message', [])->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS'  => 200,
-            'DATA'    => [],
+            'message' => 'this is message',
+            'status'  => 200,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -72,9 +72,9 @@ class OkResponseTest extends TestCase
     {
         $response = api()->ok()->getContent();
         $expectedResponse = [
-            'MESSAGE' => trans('api-response::messages.success'),
-            'STATUS'  => 200,
-            'DATA'    => [],
+            'message' => trans('api-response::messages.success'),
+            'status'  => 200,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -84,8 +84,8 @@ class OkResponseTest extends TestCase
     {
         config()->set('api.include_data_count', true);
         $response = api()->ok('User list', ['name1' => 'name1', 'name2' => 'name2'])->getContent();
-        $this->assertEquals(true, property_exists(json_decode($response), 'DATA_COUNT'));
-        $this->assertEquals(2, json_decode($response, 1)['DATA_COUNT']);
+        $this->assertEquals(true, property_exists(json_decode($response), 'data_count'));
+        $this->assertEquals(2, json_decode($response, 1)['data_count']);
     }
 
     /** @test */
@@ -93,7 +93,7 @@ class OkResponseTest extends TestCase
     {
         config()->set('api.include_data_count', true);
         $response = api()->ok('User list', [])->getContent();
-        $this->assertEquals(false, property_exists(json_decode($response), 'DATA_COUNT'));
+        $this->assertEquals(false, property_exists(json_decode($response), 'data_count'));
     }
 
     /** @test */
@@ -112,7 +112,7 @@ class OkResponseTest extends TestCase
         config()->set('api.stringify', true);
 
         $response = api()->ok('User list', ['name1' => 'name1', 'name2' => 'name2'])->getContent();
-        $this->assertIsString(json_decode($response, 1)['DATA_COUNT']);
-        $this->assertEquals(true, 2, json_decode($response, 1)['DATA_COUNT']);
+        $this->assertIsString(json_decode($response, 1)['data_count']);
+        $this->assertEquals(true, 2, json_decode($response, 1)['data_count']);
     }
 }

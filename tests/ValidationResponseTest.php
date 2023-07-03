@@ -9,9 +9,9 @@ class ValidationResponseTest extends TestCase
     {
         $response = api()->validation()->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'Validation Failed please check the request attributes and try again.',
-            'STATUS'  => 422,
-            'DATA'    => [],
+            'message' => 'Validation Failed please check the request attributes and try again.',
+            'status'  => 422,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -21,9 +21,9 @@ class ValidationResponseTest extends TestCase
     {
         $response = api()->validation('Name field is required, please check and try again.', ['name' => 'name field is required'])->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'Name field is required, please check and try again.',
-            'STATUS'  => 422,
-            'DATA'    => ['name' => 'name field is required'],
+            'message' => 'Name field is required, please check and try again.',
+            'status'  => 422,
+            'data'    => ['name' => 'name field is required'],
         ];
 
         $this->assertEquals($expectedResponse, json_decode($response, 1));
@@ -34,9 +34,9 @@ class ValidationResponseTest extends TestCase
     {
         $response = api()->validation()->getContent();
         $expectedResponse = [
-            'STATUS'  => 422,
-            'MESSAGE' => trans('api-response::messages.validation'),
-            'DATA'    => [],
+            'status'  => 422,
+            'message' => trans('api-response::messages.validation'),
+            'data'    => [],
         ];
 
         $this->assertEquals($expectedResponse, json_decode($response, 1));

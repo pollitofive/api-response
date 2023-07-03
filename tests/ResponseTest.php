@@ -19,10 +19,10 @@ class ResponseTest extends TestCase
     /** @test */
     public function it_returns_response_object_with_object()
     {
-        $data = new stdClass();
-        $data->foo = 'foo';
-        $data->bar = 'bar';
-        $data->baz = 'baz';
+        $data = [];
+        $data['foo'] = 'foo';
+        $data['bar'] = 'bar';
+        $data['baz'] = 'baz';
         $response = API::response(200, 'New Response', $data);
         $this->assertInstanceOf(JsonResponse::class, $response);
     }
@@ -50,7 +50,7 @@ class ResponseTest extends TestCase
     {
         $response = api()->ok()->getContent();
 
-        $this->assertIsString(json_decode($response, 1)['STATUS']);
+        $this->assertIsString(json_decode($response, 1)['status']);
     }
 
     /** @test */
@@ -60,7 +60,7 @@ class ResponseTest extends TestCase
 
         $response = api()->ok()->getContent();
 
-        $this->assertIsInt(json_decode($response, 1)['STATUS']);
+        $this->assertIsInt(json_decode($response, 1)['status']);
     }
 
     /** @test */
@@ -68,9 +68,9 @@ class ResponseTest extends TestCase
     {
         $response = api(403, 'Forbidden response message', [])->getContent();
         $expectedResponse = [
-            'STATUS'  => 403,
-            'MESSAGE' => 'Forbidden response message',
-            'DATA'    => [],
+            'status'  => 403,
+            'message' => 'Forbidden response message',
+            'data'    => [],
         ];
 
         $this->assertEquals($expectedResponse, json_decode($response, 1));
@@ -88,9 +88,9 @@ class ResponseTest extends TestCase
             ['reference' => 'ERROR-2019-09-14']
         )->getContent();
         $expectedResponse = [
-            'STATUS'    => 200,
-            'MESSAGE'   => 'New Response',
-            'DATA'      => ['name' => 'Joe Doe'],
+            'status'    => 200,
+            'message'   => 'New Response',
+            'data'      => ['name' => 'Joe Doe'],
             'code'      => 30566,
             'reference' => 'ERROR-2019-09-14',
         ];

@@ -9,9 +9,9 @@ class ErrorResponseTest extends TestCase
     {
         $response = api()->error()->getContent();
         $expectedResponse = [
-            'STATUS'  => 500,
-            'MESSAGE' => trans('api-response::messages.error'),
-            'DATA'    => [],
+            'status'  => 500,
+            'message' => trans('api-response::messages.error'),
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -23,9 +23,9 @@ class ErrorResponseTest extends TestCase
             ->error('error Accord, try later.', ['reference_code' => 345])
             ->getContent();
         $expectedResponse = [
-            'STATUS'  => 500,
-            'MESSAGE' => 'error Accord, try later.',
-            'DATA'    => ['reference_code' => 345],
+            'status'  => 500,
+            'message' => 'error Accord, try later.',
+            'data'    => ['reference_code' => 345],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }

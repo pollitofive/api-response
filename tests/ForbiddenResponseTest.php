@@ -9,9 +9,9 @@ class ForbiddenResponseTest extends TestCase
     {
         $response = api()->forbidden()->getContent();
         $expectedResponse = [
-            'STATUS'  => 403,
-            'MESSAGE' => trans('api-response::messages.forbidden'),
-            'DATA'    => [],
+            'status'  => 403,
+            'message' => trans('api-response::messages.forbidden'),
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -23,9 +23,9 @@ class ForbiddenResponseTest extends TestCase
             ->forbidden('No access.', ['reference_code' => 345])
             ->getContent();
         $expectedResponse = [
-            'STATUS'  => 403,
-            'MESSAGE' => 'No access.',
-            'DATA'    => ['reference_code' => 345],
+            'status'  => 403,
+            'message' => 'No access.',
+            'data'    => ['reference_code' => 345],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }

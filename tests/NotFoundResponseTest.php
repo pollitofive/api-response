@@ -11,9 +11,9 @@ class NotFoundResponseTest extends TestCase
     {
         $response = api()->notFound('No results for your query')->getContent();
         $expectedResponse = [
-            'MESSAGE' => 'No results for your query',
-            'STATUS'  => 404,
-            'DATA'    => [],
+            'message' => 'No results for your query',
+            'status'  => 404,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -23,9 +23,9 @@ class NotFoundResponseTest extends TestCase
     {
         $response = api()->notFound()->getContent();
         $expectedResponse = [
-            'MESSAGE' => trans('api-response::messages.notfound'),
-            'STATUS'  => 404,
-            'DATA'    => [],
+            'message' => trans('api-response::messages.notfound'),
+            'status'  => 404,
+            'data'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
